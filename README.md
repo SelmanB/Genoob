@@ -22,3 +22,13 @@ Components{
   Tools to set parameters dynamically;
   
   }
+  
+  Or...
+  
+  Some previously written libraries for genetic algorithm include:
+  
+  http://jenetics.io/
+  
+  http://lancet.mit.edu/ga/
+
+
