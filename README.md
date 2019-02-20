@@ -17,7 +17,7 @@ Components{
     
     Random Initializer;
       
-    Random Mutator;   --rate parameter
+    Random Mutator*;   --rate parameter
   
   Random Number Generator;
   
@@ -39,5 +39,6 @@ Components{
 
 *proportional to exp[fk] where f is the fitness function and k is the inverse temperature coefficient. 
 
+*With crossover disabled and this set to a high rate, the algorithm automatically becomes a "Simulated Annealing" algorithm
 
 It will probably be better to code in c++ and make the program such that the current progress will be printed in a file upon termination of the program. 
