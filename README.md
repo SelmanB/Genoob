@@ -1,7 +1,11 @@
 # Genoob
 Genetic Algorithm workplace for the "noober" BOUN Hashcode team
 
+Library books on "Computational Intelligence" provide plenty of information on the algorithm and its alternatives
+
 Initial proposition for the software architecture is as follows:
+
+
 
 Components{
 
@@ -12,17 +16,19 @@ Components{
     Cross-over operator(Breeder),
     
     Random Initializer;
+      
+    Random Mutator;   --rate parameter
   
   Random Number Generator;
   
-  Random Mutator;
+  Random Killer(Selecting better options according to Boltzmann's Distribution*);    --Temperature parameter
   
-  Random Killer(Selecting better options according to Boltzmann's Distribution);
-  
-  Tools to set parameters dynamically;
+  <advanced>Tools to set parameters(Mutation rate and temperature) dynamically;
   
   }
   
+  
+
   Or...
   
   Some previously written libraries for genetic algorithm include:
@@ -31,4 +37,4 @@ Components{
   
   http://lancet.mit.edu/ga/
 
-
+*proportional to exp[fk] where f is the fitness function and k is the inverse temperature coefficient. 
