@@ -1,7 +1,7 @@
 # Genoob
 Genetic Algorithm workplace for the "noober" BOUN Hashcode team
 
-Library books on "Computational Intelligence" provide plenty of information on the algorithm and its alternatives
+Library books on "Computational Intelligence" provide plenty of information on the algorithm and its alternatives. This also looks useful: http://www.obitko.com/tutorials/genetic-algorithms/index.php
 
 Initial proposition for the software architecture is as follows:
 
@@ -38,3 +38,6 @@ Components{
   http://lancet.mit.edu/ga/
 
 *proportional to exp[fk] where f is the fitness function and k is the inverse temperature coefficient. 
+
+
+It will probably be better to code in c++ and make the program such that the current progress will be printed in a file upon termination of the program. 
