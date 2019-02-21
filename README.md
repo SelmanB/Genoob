@@ -1,4 +1,7 @@
 # Genoob
+
+--*The repo is made public in order to be able to serve for more than 4 people*--
+
 Genetic Algorithm workplace for the "noober" BOUN Hashcode team
 
 Library books on "Computational Intelligence" provide plenty of information on the algorithm and its alternatives. This also looks useful: http://www.obitko.com/tutorials/genetic-algorithms/index.php
