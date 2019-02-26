@@ -1,6 +1,10 @@
 # Genoob
 
---*The repo is made public in order to be able to serve for more than 4 people*--
+*****TODO:IMPLEMENT INDIVIDUAL.H FUNCTIONS
+
+*****TODO:DEFINE PROBLEM.H ARCHITECTURE* e.g. How to choose who to kill and breed 
+          
+          
 
 Genetic Algorithm workplace for the "noober" BOUN Hashcode team
 
