@@ -10,7 +10,11 @@
 
 int gnrandi(int max);
 
-double gnrandf(float max);
+double gnrandf(float max){
+    return (0.0+gnrandi/(float)INT_MAX)
+
+
+}
 
 
 #endif //GENOOB_GNRANDOM_H
