@@ -11,7 +11,7 @@
 int gnrandi(int max);
 
 double gnrandf(float max){
-    return (0.0+gnrandi/(float)INT_MAX)
+    return (0.0+gnrandi(INT_MAX)/(float)INT_MAX)
 
 
 }
