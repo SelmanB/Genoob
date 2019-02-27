@@ -24,7 +24,7 @@ public:
   void printScores();       //IMPLEMENTED
   void generateRandomPopulation(); //FILL ARRAY OF POPULATION WİTH RANDOM INDIVIDUALS
   static size_t n=DEF_N;
-  individual *population;
+  individual *population[];
   
   
 };
@@ -62,7 +62,7 @@ void killAndReplace(){
     }t/=n;
   
     for(int i=1;i<n;i++){    //assign all members a range proportional to the random weight
-      cumSum[i]=cumSum[i-1]+exp((population[i]->score)/t);
+      cumSum[i]=cumSum[i-1]+exp(-(population[i]->score)/t);
     }
 
     rnd=gnrandf(cumSum[n-1]);//generate a random number in the whole range
@@ -84,13 +84,13 @@ void killAndReplace(){
   
       //Replace victim with a child of lucky mom and dad
   delete population[victim];
-  population[victim]=new individual(*population[a],population[b]);
+  population[victim]=new individual(*population[a],*population[b]);
 }
 
 double bestScore(){
     double max=0.0;
     for(int i=0 ; i<n ; i++){
-        double score=population[i].score; 
+        double score=population[i]->score; 
         if(score>max){
             max=score;
         }
@@ -102,7 +102,7 @@ int bestIndividual(){
     double max=0.0;
     int best;
      for(int i=0 ; i<n ; i++){
-        double score=population[i].score; 
+        double score=population[i]->score; 
         if(score>max){
             max=score;
             best=i;
@@ -114,7 +114,8 @@ int bestIndividual(){
 
 void printScores(){
     for(int i=0 ; i<n ; i++){
-        printf("%f ", population[i].score);
+        printf("i:%f\n", population[i]->score);
     }
+  puts("\n\n");
 }
 #endif //GENOOB_PROBLEM_H
