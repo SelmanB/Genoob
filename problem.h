@@ -13,7 +13,7 @@ using namespace std;
 
 class problem{
 public:
-  problem(size_t popSize=DEF_N, size_t genSize=DEF_GENSIZE, genType _type=DEF_TYPE);
+  problem(size_t popSize=DEF_N, size_t genSize=DEF_LENGTH, genType _type=DEF_TYPE);
   void killAndReplace();    //IMPLEMENT, CHOOSES WHO TO KILL AND FILLS THE SPACE BY BREEDING OTHER INDIVIDUALS USING BREEDER CONSTRUCTER
   
   static size_t n=DEF_N;
