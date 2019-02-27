@@ -7,6 +7,8 @@
 #include <cstring>
 #include "node.h"
 #include "gnrandom.h"
+#include <stdlib.h> //For random
+#icnlude <time.h> //For random
 
 enum genType {BINARY,VALUE,GRAPH};
 
@@ -90,6 +92,42 @@ individual::individual(const individual& mom, const individual& dad){
     }
     score=eval();
 }
+
+/*
+binaryBreed implemented.
+Basically creates two random indexes and mixes the genes of mom and dad.
+*/
+bool* binaryBreed(bool* mom, bool* dad, size_t length){
+    int first_gene; //Index of the first gene to be changed.
+    int last_gene; //Index of the last gene to be changed.
+    int mom_or_dad; //0 or 1, To make breeding symmetric.
+    bool* child;
+    child = new bool[genLength];
+
+    srand(time(NULL));
+    first_gene=rand()%genLength-1;
+    second_gene=rand()%genlength-1;
+    mom_or_dad =rand() %1;
+    
+    for(int i=0 ; i<length ; i++){
+       if(mom_or_dad==0){
+           if(i>=first_gene && i<=last_gene){
+               *(child+i)=*(mom+i);
+           } else {
+               *(child+i)=*(mom+i);
+           }
+       } else {
+           if(i>=first_gene && i<=last_gene){
+               *(child+i)=*(dad+i);
+           } else {
+               *(child+i)=*(mom+i);
+           }
+       }
+
+    }
+    return child;
+}
+
 
 
 
