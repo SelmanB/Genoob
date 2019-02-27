@@ -5,6 +5,8 @@
 #ifndef GENOOB_GNRANDOM_H
 #define GENOOB_GNRANDOM_H
 
+#include <stdlib.h>
+#include <time.h>
 
 int gnrandi(int max);
 
