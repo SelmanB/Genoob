@@ -7,6 +7,8 @@
 
 #include "individual.h"
 #include <vector.h>
+#include <stdlib.h>
+#include <time.h>
 using namespace std;
 
 #define DEF_N 100
@@ -17,12 +19,39 @@ public:
   void killAndReplace();    //IMPLEMENT, CHOOSES WHO TO KILL AND FILLS THE SPACE BY BREEDING OTHER INDIVIDUALS USING BREEDER CONSTRUCTER
                             //USE PROBABILITY TO LIVE ACCORDING TO BOLTZMANN's DISTRIBUTION(EXPONENTIALLY)
   void printBest();         //IMPLEMENT LATER, PROBLEM SPECIFIC
-  double bestScore();       //IMPLEMENT,easy
-  void printScores();       //IMPLEMENT,easy
+  double bestScore();       //IMPLEMENTED
+  int bestIndividual();      //IMPLEMENTED
+  void printScores();       //IMPLEMENTED
+  void generateRandomPopulation(); //FILL ARRAY OF POPULATION WİTH RANDOM INDIVIDUALS
   static size_t n=DEF_N;
   individual *population;
+  
+  
 };
 
+void problem(size_t popSize=DEF_N, size_t genSize=DEF_LENGTH, genType _type=DEF_TYPE){
+     generateRandomPopulation(genSize);
+     while(){
+         killAndReplace();
+     }        
+}
+
+void generateRandomPopulation(int genSize){
+  srand(time(NULL));
+  bool tr=true;
+  bool fa=false;
+  for(int i=0 ; i<n ; i++){
+     for(int j=0 ; j<genSize ; j++){
+          int boole=rand() %1;
+          if(boole==1){
+            *population[i].binary[j]=tr;
+          else {
+            *population[i].binary[j]=fa;
+          }
+     }
+  }
+}
+          
 
 void killAndReplace(){
     double t=0,cumSum[n],rnd;
@@ -68,6 +97,21 @@ double bestScore(){
     }
     return max;
 }
+
+int bestIndividual(){
+    double max=0.0;
+    int best;
+     for(int i=0 ; i<n ; i++){
+        double score=population[i].score; 
+        if(score>max){
+            max=score;
+            best=i;
+        }
+    }
+  return best;
+}
+
+
 void printScores(){
     for(int i=0 ; i<n ; i++){
         printf("%f ", population[i].score);
