@@ -22,7 +22,7 @@ public:
   double bestScore();       //IMPLEMENTED
   int bestIndividual();      //IMPLEMENTED
   void printScores();       //IMPLEMENTED
-  void generateRandomPopulation(); //FILL ARRAY OF POPULATION WİTH RANDOM INDIVIDUALS
+  void generateRandomPopulation(int genSize); //FILL ARRAY OF POPULATION WİTH RANDOM INDIVIDUALS
   static size_t n=DEF_N;
   individual *population[];
   
