@@ -15,10 +15,15 @@ class problem{
 public:
   problem(size_t popSize=DEF_N, size_t genSize=DEF_LENGTH, genType _type=DEF_TYPE);
   void killAndReplace();    //IMPLEMENT, CHOOSES WHO TO KILL AND FILLS THE SPACE BY BREEDING OTHER INDIVIDUALS USING BREEDER CONSTRUCTER
-  
+                            //USE PROBABILITY TO LIVE ACCORDING TO BOLTZMANN's DISTRIBUTION(EXPONENTIALLY)
+  void printBest();         //IMPLEMENT LATER, PROBLEM SPECIFIC
+  double bestScore();       //IMPLEMENT,easy
+  void printScores();       //IMPLEMENT,easy
   static size_t n=DEF_N;
   vector<individual> population;
 };
+
+
 
 
 #endif //GENOOB_PROBLEM_H
