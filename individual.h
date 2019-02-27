@@ -109,7 +109,7 @@ bool* binaryBreed(bool* mom, bool* dad, size_t length){
     second_gene=rand()%genlength-1;
     mom_or_dad =rand() %1;
     
-    for(int i=0 ; i<length ; i++){
+    for(int i=0 ; i<genLength ; i++){
        if(mom_or_dad==0){
            if(i>=first_gene && i<=last_gene){
                *(child+i)=*(mom+i);
