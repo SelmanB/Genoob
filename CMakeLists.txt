@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.12)
-project(genoob)
+project(genoobb)
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 14)
 
-add_library(genoob individual.h node.h gnrandom.h problem.h)
+add_executable(genoobb main.cpp individual.cpp individual.h problem.cpp problem.h gnrandom.cpp gnrandom.h)
