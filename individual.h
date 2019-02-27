@@ -128,6 +128,23 @@ bool* binaryBreed(bool* mom, bool* dad, size_t length){
     return child;
 }
 
+/*
+Mutates a random gene with a probability of rate.
+*/
+
+void binaryMutate(bool* gene, size_t length, double rate){
+    srand(time(NULL));
+    int toMutate;
+    int bingo=rate*genLength;
+    int draw;
+
+    toMutate=rand() %genLength-1;
+    draw=rand() &genLength-1;
+    if(draw<=bingo){
+        *(gene+toMutate)=!*(gene+toMutate);
+    }
+}
+
 
 
 
