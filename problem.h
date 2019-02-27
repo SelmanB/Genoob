@@ -29,7 +29,7 @@ public:
   
 };
 
-void problem(size_t popSize=DEF_N, size_t genSize=DEF_LENGTH, genType _type=DEF_TYPE){
+problem(size_t popSize=DEF_N, size_t genSize=DEF_LENGTH, genType _type=DEF_TYPE){
      generateRandomPopulation(genSize);
      while(){
          killAndReplace();
