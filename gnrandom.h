@@ -1,20 +1,18 @@
 //
-// Created by selman on 26.02.2019.
+// Created by Adil Numan Celik on 27.02.2019.
 //
 
-#ifndef GENOOB_GNRANDOM_H
-#define GENOOB_GNRANDOM_H
+#ifndef GENOOBB_GNRANDOM_H
+#define GENOOBB_GNRANDOM_H
+
 
 #include <stdlib.h>
 #include <time.h>
+#include <limits.h>
 
 int gnrandi(int max);
 
-double gnrandf(float max){
-    return (0.0+gnrandi(INT_MAX)/(float)INT_MAX)
+double gnrandf(float max);
 
 
-}
-
-
-#endif //GENOOB_GNRANDOM_H
+#endif //GENOOBB_GNRANDOM_H
