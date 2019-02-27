@@ -57,4 +57,20 @@ void killAndReplace(){
   delete population[victim];
   population[victim]=new individual(*population[a],population[b]);
 }
+
+double bestScore(){
+    double max=0.0;
+    for(int i=0 ; i<n ; i++){
+        double score=population[i].score; 
+        if(score>max){
+            max=score;
+        }
+    }
+    return max;
+}
+void printScores(){
+    for(int i=0 ; i<n ; i++){
+        printf("%f ", population[i].score);
+    }
+}
 #endif //GENOOB_PROBLEM_H
