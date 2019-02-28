@@ -103,11 +103,12 @@ bool* binaryBreed(bool* mom, bool* dad, size_t length){
         //cout<<mom[i]<<" ";
     }
 
-    srand(time(NULL));
+    //srand(time(NULL));
     first_gene=rand()%DEF_LENGTH-1;
    // last_gene=rand()%DEF_LENGTH-1;
     mom_or_dad =rand() %2;
 
+    cout<<"firstgene:"<<first_gene<<" "<<"mom_or_dad"<<" "<<mom_or_dad<<endl;
 
     //cout<<first_gene<<" "<<last_gene<<" "<<mom_or_dad<<endl;
 
@@ -137,7 +138,7 @@ Mutates a random gene with a probability of rate.
 */
 
 void binaryMutate(bool* gene, size_t length, double rate){
-    srand(time(NULL));
+    //srand(time(NULL));
     int toMutate;
     int bingo=rate*DEF_LENGTH;
     int draw;

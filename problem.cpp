@@ -19,7 +19,7 @@ using namespace std;
         generateRandomPopulation();
 
         int i=0;
-        while(i<100000) {
+        while(i<1000) {
             killAndReplace();
             i++;
         }
@@ -70,7 +70,7 @@ using namespace std;
         }
 
         rnd = gnrandf(cumSum[n-1]);//generate a random number in the whole range
-        cout<<rnd<<endl;
+        //cout<<rnd<<endl;
         //find whose interval is it in (I'll do first in O(n) then someone may write binary search(O(logn)))
         for (int i = 0; i < n; i++) {
             if (rnd < cumSum[i]) {
@@ -89,6 +89,7 @@ using namespace std;
         int b = victim;
         while (b == victim) b = rand()%n;
 
+        cout<<"victim: "<<victim<<" "<<a<<" "<<b<<endl;
         delete population[victim];
         population[victim] = new individual(population[a], population[b]);
     }
