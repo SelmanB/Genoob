@@ -20,7 +20,7 @@ problem:: problem(){
     generateRandomPopulation();
 
     int i=0;
-    while(i<100000) {
+    while(i<20000) {
         killAndReplace();
         i++;
     }

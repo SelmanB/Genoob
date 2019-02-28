@@ -5,6 +5,7 @@
 #include "individual.h"
 #include "stdlib.h"
 #include "iostream"
+#include "gnrandom.h"
 using namespace std;
 individual::individual() {
     binary=new bool[genLength];
@@ -59,6 +60,7 @@ individual::individual(const individual* mom, const individual* dad){
     switch(type){
         case BINARY:
             binary=binaryBreed(mom->binary, dad->binary, genLength);
+            mutate();
             break;
             /*
                 case VALUE:
@@ -88,29 +90,52 @@ individual::~individual() {
             //     break;
     }
 }
-
+bool rswap(bool input){
+    int r=rand()%100;
+    if(r==0)return !input;
+    else return input;
+}
 
 bool* binaryBreed(bool* mom, bool* dad, size_t length){
-    int first_gene; //Index of the first gene to be changed.
-    int last_gene; //Index of the last gene to be changed.
     int mom_or_dad; //0 or 1, To make breeding symmetric.
     bool* child;
     child = new bool[DEF_LENGTH];
+    //int x=0;
+    bool par=true;
 
-    for(int i=0 ; i<DEF_LENGTH ; i++){
-        //cout<<mom[i]<<" ";
+    for(int i=0;i<DEF_LENGTH;i++){
+        par=rswap(par);
+        if(par)child[i]=mom[i];
+        else child[i]=dad[i];
+    }
+    /*
+    for(int i=0 ; i<DEF_LENGTH ; i++) {
+
+
+
+        if (rand() % 200 == 0) {
+            child[i] = rand() % 2;
+            continue;
+        }
+        if (mom_or_dad == 0) {
+            if (rand() % 500 == 0) {
+                mom_or_dad = 1;
+                child[i] = dad[i];
+            } else {
+                child[i] = mom[i];
+            }
+        } else {
+            if (rand() % 500 == 0) {
+                mom_or_dad = 0;
+                child[i] = mom[i];
+            } else {
+                child[i] = dad[i];
+            }
+        }
     }
 
-    //srand(time(NULL));
-    first_gene=rand()%DEF_LENGTH-1;
-    // last_gene=rand()%DEF_LENGTH-1;
 
 
-   // cout<<"firstgene:"<<first_gene<<" "<<"mom_or_dad"<<" "<<mom_or_dad<<endl;
-
-    //cout<<first_gene<<" "<<last_gene<<" "<<mom_or_dad<<endl;
-
-    for(int i=0 ; i<DEF_LENGTH ; i++){
         if(rand()%200==0){
             child[i]=rand()%2;
             continue;
@@ -124,7 +149,7 @@ bool* binaryBreed(bool* mom, bool* dad, size_t length){
             } else {
                 child[i]=dad[i];
             }
-            */
+
         } else {
             child[i]=dad[i];
             /*
@@ -135,27 +160,21 @@ bool* binaryBreed(bool* mom, bool* dad, size_t length){
                 // cout<<mom[i]<<" "<<child[i]<<" "<<endl;
             }
              */
-        }
 
-    }
+
+
     return child;
 }
 
-/*
-Mutates a random gene with a probability of rate.
-*/
-
 void binaryMutate(bool* gene, size_t length, double rate){
-    //srand(time(NULL));
-    int toMutate;
-    int bingo=rate*DEF_LENGTH;
-    int draw;
-
-    toMutate=rand() %DEF_LENGTH-1;
-    draw=rand() &DEF_LENGTH-1;
-    if(draw<=bingo){
-        *(gene+toMutate)=!*(gene+toMutate);
+    double r=gnrandf(1.0);
+    int ind=0;
+    while(r<rate){
+        r=gnrandf(1.0);
+        ind=rand()%length;
+        gene[ind] = gene[ind] != true;
     }
+
 }
 
 double individual::eval(){

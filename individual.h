@@ -18,7 +18,7 @@ enum genType {BINARY,VALUE,GRAPH};
 #define VAL float
 #define DEF_TYPE BINARY
 #define DEF_LENGTH 2000
-#define DEF_MUT_RATE 0.01
+#define DEF_MUT_RATE 0.005
 
 
 
@@ -32,7 +32,7 @@ public:
     void mutate();                                                       //
     double eval();                                                  //IMPLEMENT EACH TIME
     ~individual();
-
+    bool rswap(bool input);
 
     const genType type=DEF_TYPE;
     const size_t genLength=DEF_LENGTH;
