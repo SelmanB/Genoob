@@ -3,15 +3,22 @@
 //
 
 #include "gnrandom.h"
+#include <random>
+#include <iostream>
+#define _MAX 100
 int gnrandi(int max){
-    int r=-1;
-    srand(time(NULL));
-    r=rand()%max;
-    return r;
+    std::random_device rd;
+    std::mt19937 mt(rd());
+    std::uniform_real_distribution<double> dist(0.0, 1.0);
+    double x= dist(mt)*max;
+    return (int) x;
 }
 
 double gnrandf(float max){
-    return (0.0+gnrandi(INT_MAX)/(float)INT_MAX);
+    std::random_device rd;
+    std::mt19937 mt(rd());
+    std::uniform_real_distribution<double> dist(0.0, max);
 
+    return dist(mt);
 
 }

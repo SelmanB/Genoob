@@ -25,9 +25,10 @@ enum genType {BINARY,VALUE,GRAPH};
 class individual{
 public:
 
-    individual();                                                   //default initializer e.g. random or greedy IMPLEMENT EACH TIME
+    individual();
+    individual &operator=(const individual& other);//default initializer e.g. random or greedy IMPLEMENT EACH TIME
     individual(const void* data);                                   //İnitializer with data
-    individual(const individual& mom, const individual& dad);       //Breeding IMPLEMENT ONCE
+    individual(const individual* mom, const individual* dad);       //Breeding IMPLEMENT ONCE
     void mutate();                                                       //
     double eval();                                                  //IMPLEMENT EACH TIME
     ~individual();

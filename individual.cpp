@@ -4,6 +4,17 @@
 
 #include "individual.h"
 #include "stdlib.h"
+#include "iostream"
+using namespace std;
+individual::individual() {
+    binary=new bool[genLength];
+}
+
+individual& individual::operator=(const individual &other) {
+    this->binary=other.binary;
+}
+
+
 individual::individual(const void *data) {
     switch(type){
         case BINARY:
@@ -45,10 +56,10 @@ void individual::mutate(){
 
 
 
-individual::individual(const individual& mom, const individual& dad){
+individual::individual(const individual* mom, const individual* dad){
     switch(type){
         case BINARY:
-            binary=binaryBreed(mom.binary, dad.binary, genLength);
+            binary=binaryBreed(mom->binary, dad->binary, genLength);
             break;
         /*
             case VALUE:
@@ -60,6 +71,10 @@ individual::individual(const individual& mom, const individual& dad){
             break;
             */
     }
+    for(int i=0 ; i<DEF_LENGTH ; i++){
+        //cout<<mom.binary[i]<<" ";
+    }
+
     score=eval();
 }
 individual::~individual() {
@@ -84,23 +99,32 @@ bool* binaryBreed(bool* mom, bool* dad, size_t length){
     bool* child;
     child = new bool[DEF_LENGTH];
 
+    for(int i=0 ; i<DEF_LENGTH ; i++){
+        //cout<<mom[i]<<" ";
+    }
+
     srand(time(NULL));
     first_gene=rand()%DEF_LENGTH-1;
-    last_gene=rand()%DEF_LENGTH-1;
-    mom_or_dad =rand() %1;
+   // last_gene=rand()%DEF_LENGTH-1;
+    mom_or_dad =rand() %2;
+
+
+    //cout<<first_gene<<" "<<last_gene<<" "<<mom_or_dad<<endl;
 
     for(int i=0 ; i<DEF_LENGTH ; i++){
         if(mom_or_dad==0){
-            if(i>=first_gene && i<=last_gene){
-                *(child+i)=*(mom+i);
+            if(i>=first_gene /*&& i<=last_gene*/){
+                child[i]=mom[i];
+               // cout<<mom[i]<<" "<<child[i]<<" "<<endl;
             } else {
-                *(child+i)=*(dad+i);
+                child[i]=dad[i];
             }
         } else {
-            if(i>=first_gene && i<=last_gene){
-                *(child+i)=*(dad+i);
+            if(i>=first_gene /*&& i<=last_gene*/){
+                child[i]=dad[i];
             } else {
-                *(child+i)=*(mom+i);
+                child[i]=mom[i];
+               // cout<<mom[i]<<" "<<child[i]<<" "<<endl;
             }
         }
 
