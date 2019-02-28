@@ -21,15 +21,15 @@ individual::individual(const void *data) {
             binary=new bool[genLength];
             memcpy(binary,data,genLength);
             break;
-    /*
-        case VALUE:
-            value=new VAL[genLength];
-            memcpy(value,data,genLength);
-            break;
-        case GRAPH:
-            //   root=&(*((Node*)data));
-            break;
- */
+            /*
+                case VALUE:
+                    value=new VAL[genLength];
+                    memcpy(value,data,genLength);
+                    break;
+                case GRAPH:
+                    //   root=&(*((Node*)data));
+                    break;
+         */
     }
     score=eval();
 }
@@ -40,16 +40,15 @@ void individual::mutate(){
         case BINARY:
             binaryMutate(binary, genLength, mutRate);
             break;
-    /*
-        case VALUE:
-            valueMutate(value, genLength, mutRate);
-            break;
-
-        case GRAPH:
-            graphMutate(root, mutRate);
-            break;
-    */
-        }
+            /*
+                case VALUE:
+                    valueMutate(value, genLength, mutRate);
+                    break;
+                case GRAPH:
+                    graphMutate(root, mutRate);
+                    break;
+            */
+    }
     score=eval();
 }
 
@@ -61,15 +60,14 @@ individual::individual(const individual* mom, const individual* dad){
         case BINARY:
             binary=binaryBreed(mom->binary, dad->binary, genLength);
             break;
-        /*
-            case VALUE:
-            value=valueBreed(mom.value, dad.value, genLength);
-            break;
-
-            case GRAPH:
-            root=binaryBreed(mom.root, dad.root);
-            break;
-            */
+            /*
+                case VALUE:
+                value=valueBreed(mom.value, dad.value, genLength);
+                break;
+                case GRAPH:
+                root=binaryBreed(mom.root, dad.root);
+                break;
+                */
     }
     for(int i=0 ; i<DEF_LENGTH ; i++){
         //cout<<mom.binary[i]<<" ";
@@ -82,12 +80,12 @@ individual::~individual() {
         case BINARY:
             delete binary;
             break;
-        //case VALUE:
-        //    delete value;
-       //     break;
-       // case GRAPH:
-       //     delete root;
-       //     break;
+            //case VALUE:
+            //    delete value;
+            //     break;
+            // case GRAPH:
+            //     delete root;
+            //     break;
     }
 }
 
@@ -105,28 +103,38 @@ bool* binaryBreed(bool* mom, bool* dad, size_t length){
 
     //srand(time(NULL));
     first_gene=rand()%DEF_LENGTH-1;
-   // last_gene=rand()%DEF_LENGTH-1;
-    mom_or_dad =rand() %2;
+    // last_gene=rand()%DEF_LENGTH-1;
 
-    cout<<"firstgene:"<<first_gene<<" "<<"mom_or_dad"<<" "<<mom_or_dad<<endl;
+
+   // cout<<"firstgene:"<<first_gene<<" "<<"mom_or_dad"<<" "<<mom_or_dad<<endl;
 
     //cout<<first_gene<<" "<<last_gene<<" "<<mom_or_dad<<endl;
 
     for(int i=0 ; i<DEF_LENGTH ; i++){
+        if(rand()%200==0){
+            child[i]=rand()%2;
+            continue;
+        }
+        mom_or_dad =rand() %2;
         if(mom_or_dad==0){
-            if(i>=first_gene /*&& i<=last_gene*/){
+           child[i]=mom[i];
+           /* if(i>=first_gene && i<=last_gene){
                 child[i]=mom[i];
-               // cout<<mom[i]<<" "<<child[i]<<" "<<endl;
+                // cout<<mom[i]<<" "<<child[i]<<" "<<endl;
             } else {
                 child[i]=dad[i];
             }
+            */
         } else {
-            if(i>=first_gene /*&& i<=last_gene*/){
+            child[i]=dad[i];
+            /*
+            if(i>=first_gene && i<=last_gene){
                 child[i]=dad[i];
             } else {
                 child[i]=mom[i];
-               // cout<<mom[i]<<" "<<child[i]<<" "<<endl;
+                // cout<<mom[i]<<" "<<child[i]<<" "<<endl;
             }
+             */
         }
 
     }

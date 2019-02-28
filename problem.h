@@ -21,7 +21,7 @@ public:
     problem();//size_t popSize, size_t genSize, genType _type);
     individual* population[DEF_N];
     void killAndReplace();    //IMPLEMENT, CHOOSES WHO TO KILL AND FILLS THE SPACE BY BREEDING OTHER INDIVIDUALS USING BREEDER CONSTRUCTER
-                                                        //USE PROBABILITY TO LIVE ACCORDING TO BOLTZMANN's DISTRIBUTION(EXPONENTIALLY)
+    double worstScore();// USE PROBABILITY TO LIVE ACCORDING TO BOLTZMANN's DISTRIBUTION(EXPONENTIALLY)
     void printBest();         //IMPLEMENT LATER, PROBLEM SPECIFIC
     double bestScore();       //IMPLEMENTED
     int bestIndividual();      //IMPLEMENTED
